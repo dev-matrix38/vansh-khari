@@ -208,14 +208,17 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
-      <!-- Left Column: Real Photo of Vansh Khari (Poster Style) -->
+      <!-- Left Column: Real Photo of Vansh Khari (Ultra-Premium Circular Medallion) -->
       <div class="lg:col-span-5 flex justify-center items-center">
-        <div class="relative w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden shadow-2xl border-2 border-brandYellow/40 bg-neutral-900 group">
-          <img src="vansh-khari.jpg" alt="Vansh Khari — Bespoke Real Estate Advisor" class="w-full h-auto object-cover object-top aspect-[4/5] group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-4 left-0 right-0 text-center">
-            <span class="text-xs uppercase tracking-widest text-brandYellow font-extrabold drop-shadow">
-              Vansh Khari
+        <div class="relative p-1.5 rounded-full bg-gradient-to-tr from-brandYellow via-yellow-200 to-brandYellowHover shadow-[0_0_50px_rgba(255,204,0,0.22)] group">
+          <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-black bg-neutral-950 relative">
+            <img src="vansh-khari.jpg" alt="Vansh Khari — Bespoke Real Estate Advisor" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+          <!-- Floating Gold Status Badge -->
+          <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-black border-2 border-brandYellow px-5 py-1 rounded-full shadow-2xl whitespace-nowrap">
+            <span class="text-[11px] font-black uppercase tracking-widest text-brandYellow">
+              Vansh Khari • Principal Advisor
             </span>
           </div>
         </div>
@@ -1000,7 +1003,11 @@
       <div>
         © 2026 Vansh Khari. All Rights Reserved.
       </div>
-      <div>
+      <div class="flex items-center gap-4 sm:gap-6">
+        <button onclick="openPolicyModal('terms')" class="text-neutral-400 hover:text-brandYellow transition cursor-pointer">Terms & Conditions</button>
+        <span>•</span>
+        <button onclick="openPolicyModal('privacy')" class="text-neutral-400 hover:text-brandYellow transition cursor-pointer">Privacy Policy</button>
+        <span>•</span>
         <a href="#home" class="text-brandYellow hover:underline font-semibold">Back to top ↑</a>
       </div>
     </div>
@@ -1131,6 +1138,35 @@
 
     function closeArticleModal() {
       document.getElementById('articleModal').classList.add('hidden');
+    }
+
+    // Terms & Conditions and Privacy Policy Modals
+    function openPolicyModal(type) {
+      if (type === 'terms') {
+        document.getElementById('modalContent').innerHTML = `
+          <p class="text-xs text-brandYellow font-bold uppercase tracking-widest">Legal & Advisory Framework</p>
+          <h2 class="text-2xl font-black text-white heading-font">Terms & Conditions</h2>
+          <div class="text-neutral-300 text-xs sm:text-sm space-y-3.5 leading-relaxed mt-4">
+            <p><strong>1. Scope of Advisory Practice:</strong> Vansh Khari operates strictly as an independent bespoke real estate advisor. We provide strategic acquisition counsel, location analysis, and research-backed property evaluation. We do not operate as an open property listing marketplace, commercial broker exchange, or developer sales agency.</p>
+            <p><strong>2. Advisory Opinion & Verification:</strong> All research briefings, architectural observations, and valuation assessments represent professional advisory perspectives based on data available at the time of review. Clients are advised to coordinate final title search and statutory due diligence with certified legal practitioners and licensed revenue authorities.</p>
+            <p><strong>3. Strict Mutual Confidentiality:</strong> All interactions, client wealth allocations, lifestyle criteria, and transactional details are held in strictest confidence under fiduciary standards of professional discretion.</p>
+            <p><strong>4. Intellectual Property:</strong> All original articles, decision frameworks, and advisory methodologies published on www.vanshkhari.com are the intellectual property of Vansh Khari.</p>
+          </div>
+        `;
+      } else if (type === 'privacy') {
+        document.getElementById('modalContent').innerHTML = `
+          <p class="text-xs text-brandYellow font-bold uppercase tracking-widest">Client Discretion & Trust</p>
+          <h2 class="text-2xl font-black text-white heading-font">Privacy Policy</h2>
+          <div class="text-neutral-300 text-xs sm:text-sm space-y-3.5 leading-relaxed mt-4">
+            <p><strong>1. Collection of Information:</strong> We collect only relevant contact details (Name, Phone/WhatsApp number, Email, and acquisition requirements) submitted voluntarily via our private consultation forms.</p>
+            <p><strong>2. Absolute Non-Disclosure Policy:</strong> We maintain a strict zero-spam and zero-broker policy. Your contact details and property interests are <strong>never sold, shared, rented, or distributed</strong> to third-party developers, mass broker networks, or marketing agencies.</p>
+            <p><strong>3. Use of Information:</strong> Collected details are utilized exclusively to facilitate direct 1-on-1 private discussions with Vansh Khari regarding your real estate requirements.</p>
+            <p><strong>4. Data Security:</strong> All client inquiries are transmitted via secure encrypted channels to safeguard privacy and confidentiality.</p>
+            <p><strong>Contact:</strong> For privacy inquiries, reach us directly at <span class="text-brandYellow font-semibold">contact@vanshkhari.com</span>.</p>
+          </div>
+        `;
+      }
+      document.getElementById('articleModal').classList.remove('hidden');
     }
 
     // Close modal on click outside
